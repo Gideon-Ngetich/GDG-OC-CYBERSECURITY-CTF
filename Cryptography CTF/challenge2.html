@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 1 - Cryptography</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-mono">
+    <div class="flex flex-col items-center justify-center min-h-screen px-4">
+        <h1 class="text-4xl font-bold text-amber-500 mb-6"></h1>
+        <p class="text-lg text-center max-w-2xl mb-3">
+            Decode the following message to uncover your next clue:
+        </p>
+        <p>Seek the truth where the light bends.</p><br><br />
+        <div class="bg-gray-800 text-amber-400 p-4 rounded-lg shadow-md mb-8">
+            GUR SYNT VF TQTBPXNONENX
+        </div>
+        <p class="text-sm italic text-gray-400 mb-4">Hint: Halfway through the alphabets, you’ll find your answer.</p>
+        <input id="flag" type="text" placeholder="Enter the flag Format: ************" class="w-full max-w-md bg-gray-800 text-gray-100 rounded-lg p-3 mb-4 focus:ring-2 focus:ring-amber-500">
+        <button onclick="challengeOneFlagValidator()" class="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-8 rounded-lg shadow-lg">
+            Submit
+        </button>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
