@@ -5,6 +5,17 @@ async function challengeOneFlagValidator() {
     const remark = document.getElementById('remark')
     const challengeId = 'CH012025'
 
+    if (flag === '') {
+        remark.innerHTML = `
+        <div class="bg-red-500 p-3 border-red-500 md:w-full rounded-md text-center">Please enter a value</div>
+    `
+        setTimeout(() => {
+            remark.innerHTML = ''
+        }, 3000)
+
+        return
+    }
+
     try {
         const response = await fetch(`${endpoint}/api/submitflag`, {
             method: 'POST',
