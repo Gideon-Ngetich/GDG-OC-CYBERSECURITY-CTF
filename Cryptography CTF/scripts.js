@@ -137,7 +137,7 @@ async function challengeThreeFlagValidator() {
 
             `
             setTimeout(() => {
-                window.location.href = '/Cryptography%20CTF/challenge5.html'
+                window.location.href = '/Cryptography%20CTF/challenge4.html'
             }, 4000)
 
             console.log({ 'Success': result })
