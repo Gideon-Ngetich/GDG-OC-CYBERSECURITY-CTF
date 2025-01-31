@@ -7,6 +7,7 @@ const port = process.env.PORT
 const app = express()
 const PostFlag = require('./Routes/POSTFlag.Route')
 const GetFlag = require('./Routes/SubmitFlag.Route')
+const RandomValue = require('./Routes/RandomValue.Route')
 app.use(express.json())
 app.use(cors())
 
@@ -24,3 +25,4 @@ mongoose.connect(process.env.CONNECTION_STRING)
 
 app.use('/api/postflags', PostFlag)
 app.use('/api/submitflag', GetFlag)
+app.use('/api/random', RandomValue)

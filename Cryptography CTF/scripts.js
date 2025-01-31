@@ -107,7 +107,7 @@ async function challengeTwoFlagValidator() {
 async function challengeThreeFlagValidator() {
     const flag = document.getElementById('flag').value
     const remark = document.getElementById('remark')
-    const challengeId = 'CH022025'
+    const challengeId = 'CH032025'
 
     if (flag === '') {
         remark.innerHTML = `
@@ -155,3 +155,36 @@ async function challengeThreeFlagValidator() {
 
     }
 }
+
+function generateRandomString(length = 16) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
+    }
+    return result;
+}
+
+async function sendRandomValueToServer() {
+    const randomValue = generateRandomString(16); // You can change the length
+
+    // Sending the value to the backend (Node.js server)
+    try {
+        const response = await fetch(`${endpoint}/api/random`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ randomValue }), // Send the random value in the body
+        });
+
+        const data = await response.json();
+        console.log('Server response:', data);
+    } catch (error) {
+        console.error('Error sending data to server:', error);
+    }
+}
+
+// Call the function when the page loads
+

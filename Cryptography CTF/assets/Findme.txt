@@ -1,0 +1,2 @@
+The Vigenère cipher passes under the code, through the trees, and reveals the key KEY=key
+MMAKHY2025

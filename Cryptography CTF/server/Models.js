@@ -13,4 +13,17 @@ const chalengesSchema = new mongoose.Schema({
 
 const Flag = mongoose.model('Flags', chalengesSchema)
 
-module.exports = { Flag }
+const randomDataSchema = new mongoose.Schema({
+    randomValue: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+  });
+
+  const Value =  mongoose.model('Values', randomDataSchema)
+
+module.exports = { Flag, Value }
