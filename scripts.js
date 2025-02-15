@@ -36,7 +36,7 @@ async function challengeOneFlagValidator() {
                 <div class="bg-green-400 p-3 border-green-500 md:w-3/4 rounded-md text-center">Congratulation expolorer you have found the flag. Keep up the challenge. You'll be redirected to the next challenge shortly</div>
             `
             setTimeout(() => {
-                window.location.href = '/Cryptography_CTF/challenge2.html'
+                window.location.href = '/challenge2.html'
 
             }, 5000)
             console.log({ 'Success': result })
@@ -87,7 +87,7 @@ async function challengeTwoFlagValidator() {
 
             `
             setTimeout(() => {
-                window.location.href = '/Cryptography_CTF/challenge3.html'
+                window.location.href = '/challenge3.html'
                 
             }, 4000)
 
@@ -140,7 +140,7 @@ async function challengeThreeFlagValidator() {
 
             `
             setTimeout(() => {
-                window.location.href = '/Cryptography_CTF/challenge4.html'
+                window.location.href = '/challenge4.html'
             }, 4000)
 
             console.log({ 'Success': result })
