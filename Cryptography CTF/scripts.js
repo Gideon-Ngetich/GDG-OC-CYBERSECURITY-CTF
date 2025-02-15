@@ -1,4 +1,4 @@
-const endpoint = 'http://localhost:7250'
+const endpoint = 'https://gdg-oc-cybersecurity-ctf.onrender.com'
 
 async function challengeOneFlagValidator() {
     const flag = document.getElementById('flag').value.trim();
