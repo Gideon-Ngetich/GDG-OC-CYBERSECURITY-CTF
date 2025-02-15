@@ -86,6 +86,7 @@ async function challengeTwoFlagValidator() {
             `
             setTimeout(() => {
                 window.location.href = '/Cryptography%20CTF/challenge3.html'
+                
             }, 4000)
 
             console.log({ 'Success': result })

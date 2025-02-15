@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Destination</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-900 text-gray-100 font-mono">
     <div class="flex flex-col items-center justify-center min-h-screen px-4">
         <h1 class="text-3xl md:text-5xl font-extrabold text-amber-500 mb-6">Final Destination</h1>
@@ -13,42 +15,64 @@
             *"Congratulations explorer you have come to the end of the quest"*
         </p>
         <p class="text-md text-gray-400 text-center max-w-md mb-6">
-            Here is your reward for your hard work. <br/> Submit your reward token using the form below
+            Here is your reward for your hard work. <br /> Submit your reward token using the form below
         </p>
-        <a class="px-7 py-3 bg-yellow-600 text-white font-bold" href="https://forms.gle/fNNiF1i6o2HZU9vh8">Submit Reward Token</a>
-        
+        <P id="token" class="text-xl font-semibold py-10"></P>
+        <a class="px-7 py-3 bg-yellow-600 text-white font-bold" href="https://forms.gle/fNNiF1i6o2HZU9vh8">Submit Reward
+            Token</a>
+
     </div>
     <script>
         function generateRandomString(length = 16) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        result += characters[randomIndex];
-    }
-    return result;
-}
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                result += characters[randomIndex];
+            }
+            return result;
+        }
 
-async function sendRandomValueToServer() {
-    const randomValue = generateRandomString(16); // You can change the length
-    const endpoint = 'http://localhost:7250'
-    // Sending the value to the backend (Node.js server)
-    try {
-        const response = await fetch(`${endpoint}/api/random`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ randomValue }), // Send the random value in the body
+        async function sendRandomValueToServer() {
+
+            const endpoint = 'http://localhost:7250';
+
+            try {
+                const response = await fetch(`${endpoint}/api/random`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token }),
+                });
+
+                const data = await response.json(); // Convert response to JSON
+
+                console.log("Server Response:", data); // Debugging
+
+                // ✅ Ensure response structure is correct
+                if (data && data.data && data.data.randomValue) {
+                    console.log("Displaying Random Value:", data.data.randomValue);
+                    document.getElementById('token').textContent = data.data.randomValue;
+                } else {
+                    console.error("Unexpected response structure:", data);
+                }
+
+            } catch (error) {
+                console.error("Error sending data to server:", error);
+            }
+        }
+
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const token = generateRandomString(16); // Generate the token
+            document.getElementById('token').textContent = token; // Show immediately
+            sendRandomValueToServer(token); // Send to server
         });
 
-        const data = await response.json();
-        console.log('Server response:', data);
-    } catch (error) {
-        console.error('Error sending data to server:', error);
-    }
-}
-</script>
-    <script src="scripts.js"></script>      
+    </script>
+
+    <script src="scripts.js"></script>
 </body>
+
 </html>
